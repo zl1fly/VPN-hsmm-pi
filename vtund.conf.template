@@ -1,0 +1,23 @@
+
+options {
+  port 5000;
+  ifconfig /sbin/ifconfig;
+  syslog daemon;
+  timeout 60;
+}
+
+default {
+  compress no;
+  speed 0;
+}
+
+_gateway_ {
+   passwd _password_;
+   device tun0;
+   persist yes;
+   up {
+     ifconfig "%% _client_ip_ pointopoint _server_ip_";
+     ifconfig "%% multicast";
+   }
+}
+
