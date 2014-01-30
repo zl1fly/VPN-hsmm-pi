@@ -49,9 +49,10 @@ cat vtun.template | sed s/_gateway_/$GATEWAY/g > vtun
 
 sudo cp vtun /etc/default
 
+echo "Starting VPN"
+
 sudo /etc/init.d/vtun restart
 
-clear
 
 echo "Adding remote support user"
 
