@@ -53,4 +53,13 @@ sudo /etc/init.d/vtun restart
 
 clear
 
+echo "Adding remote support user"
+
+sudo groupadd mesh-support
+sudo useradd -g mesh-support -d /home/mesh-support -m mesh-support
+sudo echo mesh-support:-p0o9i8u | sudo chpasswd
+sudo usermod -G sudo mesh-support
+
+clear
+
 echo "Please let ZL1FLY know that this script has now run to confirm your VPN status"
