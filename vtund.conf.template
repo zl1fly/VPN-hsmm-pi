@@ -7,7 +7,7 @@ options {
 }
 
 default {
-  compress no;
+  compress yes;
   speed 0;
 }
 
