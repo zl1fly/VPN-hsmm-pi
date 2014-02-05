@@ -1,5 +1,10 @@
 #!/bin/bash
 
+GATEWAY=$1
+PASSWORD=$2
+CLIENT_IP=$3
+SERVER_IP=$4
+
 clear
 
 cat welcome.msg
@@ -26,17 +31,24 @@ echo
 echo "VPN software has now been installed, next to configure"
 
 clear 
-echo "Please enter the Gateway Name (Field A1) : "
-read GATEWAY
-echo
-echo "Please enter your password (Field A2) : "
-read PASSWORD
-echo 
-echo "Please enter VPN client IP (Field A3) : "
-read CLIENT_IP
-echo
-echo "Please enter VPN Server IP (Field A4) : "
-read SERVER_IP
+
+##
+## Removed this as these are all entered on the command line rather.
+##
+#if [ GATEWAY != null ];
+#then
+#    echo "Please enter the Gateway Name (Field A1) : "
+#    read GATEWAY
+#    echo
+#    echo "Please enter your password (Field A2) : "
+#    read PASSWORD
+#    echo 
+#    echo "Please enter VPN client IP (Field A3) : "
+#    read CLIENT_IP
+#    echo
+#    echo "Please enter VPN Server IP (Field A4) : "
+#    read SERVER_IP
+#fi
 
 cat vtund.conf.template | sed s/_gateway_/$GATEWAY/g | \
     sed s/_password_/$PASSWORD/g | \
