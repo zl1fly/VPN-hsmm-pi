@@ -4,6 +4,7 @@ GATEWAY=$1
 PASSWORD=$2
 CLIENT_IP=$3
 SERVER_IP=$4
+SUPPORT_PASSWORD=$5
 
 clear
 
@@ -70,7 +71,7 @@ echo "Adding remote support user"
 
 sudo groupadd mesh-support
 sudo useradd -g mesh-support -d /home/mesh-support -m mesh-support
-sudo echo mesh-support:-p0o9i8u | sudo chpasswd
+sudo echo mesh-support:$SUPPORT_PASSWORD | sudo chpasswd
 sudo usermod -G sudo mesh-support
 
 clear
