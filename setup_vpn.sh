@@ -33,24 +33,6 @@ echo "VPN software has now been installed, next to configure"
 
 clear 
 
-##
-## Removed this as these are all entered on the command line rather.
-##
-#if [ GATEWAY != null ];
-#then
-#    echo "Please enter the Gateway Name (Field A1) : "
-#    read GATEWAY
-#    echo
-#    echo "Please enter your password (Field A2) : "
-#    read PASSWORD
-#    echo 
-#    echo "Please enter VPN client IP (Field A3) : "
-#    read CLIENT_IP
-#    echo
-#    echo "Please enter VPN Server IP (Field A4) : "
-#    read SERVER_IP
-#fi
-
 cat vtund.conf.template | sed s/_gateway_/$GATEWAY/g | \
     sed s/_password_/$PASSWORD/g | \
     sed s/_client_ip_/$CLIENT_IP/g | \
@@ -77,3 +59,7 @@ sudo usermod -G sudo mesh-support
 clear
 
 echo "Please let ZL1FLY know that this script has now run to confirm your VPN status"
+
+echo "Rebooting to finalize VPN device."
+
+sudo init 6
