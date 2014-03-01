@@ -50,14 +50,22 @@ sudo /etc/init.d/vtun restart
 
 
 echo "Adding remote support user"
+echo "Do you want to add login support for ZL1FLY (Y/N)"
+read ANSWER
 
-sudo groupadd mesh-support
-sudo useradd -g mesh-support -d /home/mesh-support -m mesh-support
-sudo echo mesh-support:$SUPPORT_PASSWORD | sudo chpasswd
-sudo usermod -G sudo mesh-support
+
+if [ "$ANSWER" != "N" ]; 
+then
+    if [ "$ANSWER" != "n" ];
+    then
+        sudo groupadd mesh-support
+        sudo useradd -g mesh-support -d /home/mesh-support -m mesh-support
+        sudo echo mesh-support:$SUPPORT_PASSWORD | sudo chpasswd
+        sudo usermod -G sudo mesh-support
+    fi
+fi
 
 clear
-
 echo "Please let ZL1FLY know that this script has now run to confirm your VPN status"
 
 echo "Rebooting to finalize VPN device."
